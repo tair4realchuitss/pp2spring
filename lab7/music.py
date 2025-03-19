@@ -24,17 +24,17 @@ while not done:
                     pygame.mixer.music.unpause()
                     music_playing = True
             if event.key == pygame.K_RIGHT:
-                current_song +=1
-                pygame.mixer.music.load(songs[current_song])
-                pygame.mixer.music.play()
-                if current_song > len(songs):
-                    current_song = 0
+                current_song += 1
+            if current_song >= len(songs): 
+                current_song = 0
+            pygame.mixer.music.load(songs[current_song])
+            pygame.mixer.music.play()
             if event.key == pygame.K_LEFT:
-                current_song -= 1 
-                pygame.mixer.music.load(songs[current_song])
-                pygame.mixer.music.play()
-                if current_song < 0:
-                    current_song = len(songs) - 1
+                current_song -= 1
+            if current_song < 0:  
+                current_song = len(songs) - 1
+            pygame.mixer.music.load(songs[current_song])
+            pygame.mixer.music.play()
             if event.key == pygame.K_r:
                 pygame.mixer.music.rewind()
                 current_song = 0
